@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@+id/navigation_order">
+
+    <fragment
+        android:id="@+id/navigation_order"
+        android:name="com.food2go.frontend.menuFragments.OrderFragment"
+        android:label="@string/title_order"
+        tools:layout="@layout/fragment_order" />
+
+    <fragment
+        android:id="@+id/navigation_history"
+        android:name="com.food2go.frontend.menuFragments.HistoryFragment"
+        android:label="@string/title_history"
+        tools:layout="@layout/fragment_history" />
+
+    <fragment
+        android:id="@+id/navigation_profile"
+        android:name="com.food2go.frontend.menuFragments.ProfileFragment"
+        android:label="@string/title_profile"
+        tools:layout="@layout/fragment_profile" />
+    <fragment
+        android:id="@+id/navigation_preferences"
+        android:name="com.food2go.frontend.menuFragments.PreferenceFragment"
+        android:label="@string/title_preferences"
+        tools:layout="@layout/fragment_preference" />
+</navigation>
