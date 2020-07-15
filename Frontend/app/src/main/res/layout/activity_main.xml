@@ -9,53 +9,28 @@
     android:background="@color/colorPrimary"
     tools:context=".MainActivity">
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="37dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginLeft="70dp"
+        android:layout_marginTop="60dp"
+        android:text="Npl Restaurant"
+        android:textAllCaps="true"
+        android:textColor="@color/colorWhite"
+        android:textSize="20dp" />
+
     <ImageView
         android:id="@+id/imageView1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="150dp"
+        android:layout_marginTop="110dp"
+        android:layout_marginEnd="90dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/restaurant_logo"/>
-
-
-    <TextView
-        android:id="@+id/tv_welcome"
-        android:layout_width="306dp"
-        android:layout_height="66dp"
-        android:layout_below="@+id/imageView1"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentEnd="true"
-        android:layout_marginStart="63dp"
-        android:layout_marginLeft="70dp"
-        android:layout_marginTop="94dp"
-        android:layout_marginEnd="41dp"
-        android:layout_marginRight="60dp"
-        android:text="Welcome to NPL Restaurant"
-        android:textColor="@color/colorWhite"
-        android:textSize="22dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:layout_width="203dp"
-        android:layout_height="60dp"
-        android:layout_below="@+id/tv_welcome"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentEnd="true"
-        android:layout_marginStart="118dp"
-        android:layout_marginTop="32dp"
-
-
-        android:layout_marginEnd="90dp"
-        android:text="Start your first Order"
-        android:textColor="@color/colorWhite"
-        android:textSize="22dp"
-        app:layout_constraintBottom_toTopOf="@+id/tv_welcome" />
+        app:srcCompat="@drawable/restaurant_logo" />
 
 </RelativeLayout>
 
