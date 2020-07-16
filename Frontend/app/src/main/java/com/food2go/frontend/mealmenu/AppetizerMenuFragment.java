@@ -9,6 +9,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import com.food2go.frontend.R;
 import com.food2go.frontend.adapter.RecyclerViewAdapter;
@@ -37,7 +38,8 @@ public class AppetizerMenuFragment extends Fragment implements IMenuItemsClickLi
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_main_menu, container, false);
-
+        TextView title = view.findViewById(R.id.tv_main_menu);
+        title.setText(R.string.appetizer_menu);
         recyclerView = view.findViewById(R.id.recyclerView);
         layoutManager= new GridLayoutManager(getContext(),2);
         recyclerView.setLayoutManager(layoutManager);

@@ -45,15 +45,6 @@ public class MainActivity extends AppCompatActivity {
 //            }
 //        });
 
-//        navigationView.menu!!.findItem(R.id.nav_logout).setOnMenuItemClickListener { menuItem:MenuItem? ->
-//            //write your implementation here
-//            //to close the navigation drawer
-//            if (drawer_layout.isDrawerOpen(GravityCompat.START)) {
-//                drawer_layout.closeDrawer(GravityCompat.START)
-//            }
-//            Toast.makeText(applicationContext, "single item click listener implemented", Toast.LENGTH_SHORT).show()
-//            true
-//        }
 
     }
 }

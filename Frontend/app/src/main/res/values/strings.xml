@@ -24,4 +24,13 @@
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+
+
+
+    <!---menu item names -->
+    <string name="main_menu">Menu</string>
+    <string name="appetizer_menu">Appetizer</string>
+    <string name="dessert_menu">Dessert</string>
+    <string name="drink_menu">Drink</string>
+    <string name="meal_menu">Meal</string>
 </resources>

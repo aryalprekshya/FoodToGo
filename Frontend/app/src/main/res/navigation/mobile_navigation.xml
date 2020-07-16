@@ -78,6 +78,10 @@
         <action
             android:id="@+id/action_navigation_main_menu_to_navigation_meal_menu"
             app:destination="@id/navigation_meal_menu" />
+        <action
+            android:id="@+id/action_navigation_main_menu_to_navigation_dessert_menu"
+            app:destination="@id/navigation_dessert_menu" />
+
     </fragment>
     <fragment
         android:id="@+id/navigation_appetizer_menu"
@@ -94,4 +98,9 @@
         android:name="com.food2go.frontend.mealmenu.MealMeuFragment"
         android:label="fragment_meal_meu"
         tools:layout="@layout/fragment_meal_meu" />
+    <fragment
+        android:id="@+id/navigation_dessert_menu"
+        android:name="com.food2go.frontend.mealmenu.DessertMenuFragment"
+        android:label="fragment_dessert_menu"
+        tools:layout="@layout/fragment_dessert_menu" />
 </navigation>

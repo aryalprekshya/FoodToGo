@@ -13,6 +13,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import com.food2go.frontend.R;
 import com.food2go.frontend.adapter.RecyclerViewAdapter;
@@ -44,7 +45,8 @@ public class MainMenuFragment extends Fragment implements IMenuItemsClickListene
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_main_menu, container, false);
-
+        TextView title = view.findViewById(R.id.tv_main_menu);
+        title.setText(R.string.main_menu);
         recyclerView = view.findViewById(R.id.recyclerView);
         layoutManager= new GridLayoutManager(getContext(),2);
         recyclerView.setLayoutManager(layoutManager);
@@ -89,8 +91,10 @@ public class MainMenuFragment extends Fragment implements IMenuItemsClickListene
                 navController.navigate(R.id.action_navigation_main_menu_to_navigation_appetizer_menu);
                 break;
             case "Meal":
-            case "Dessert":
                 navController.navigate(R.id.action_navigation_main_menu_to_navigation_meal_menu);
+                break;
+            case "Dessert":
+                navController.navigate(R.id.action_navigation_main_menu_to_navigation_dessert_menu);
                 break;
             default:
 

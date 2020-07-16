@@ -16,16 +16,19 @@ import com.food2go.frontend.adapter.RecyclerViewAdapter;
 import com.food2go.frontend.interfaces.IMenuItemsClickListener;
 import com.food2go.frontend.models.Menu;
 
+
 import java.util.ArrayList;
 
-public class DrinkMenuFragment extends Fragment implements IMenuItemsClickListener {
+public class DessertMenuFragment extends Fragment implements IMenuItemsClickListener {
+
     private RecyclerView recyclerView;
     RecyclerView.LayoutManager layoutManager;
     RecyclerViewAdapter recyclerViewAdapter;
 
-    public DrinkMenuFragment() {
+    public DessertMenuFragment() {
         // Required empty public constructor
     }
+
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -39,7 +42,7 @@ public class DrinkMenuFragment extends Fragment implements IMenuItemsClickListen
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_main_menu, container, false);
         TextView title = view.findViewById(R.id.tv_main_menu);
-        title.setText(R.string.drink_menu);
+        title.setText(R.string.dessert_menu);
         recyclerView = view.findViewById(R.id.recyclerView);
         layoutManager= new GridLayoutManager(getContext(),2);
         recyclerView.setLayoutManager(layoutManager);
@@ -49,11 +52,13 @@ public class DrinkMenuFragment extends Fragment implements IMenuItemsClickListen
 
         return view;
     }
+
     private ArrayList<Menu> createDummyMenu() {
-        Menu menu = new Menu("Category", "Tea", R.drawable.tea);
-        Menu menu1 = new Menu("Category", "Ice-Tea", R.drawable.icetea);
-        Menu menu2 = new Menu("Category", "Coke", R.drawable.coke);
-        Menu menu3 = new Menu("Category", "Water", R.drawable.waterbottle);
+        Menu menu = new Menu("Category", "Ice-Cream", R.drawable.icecream);
+        Menu menu1 = new Menu("Category", "Cone", R.drawable.cone);
+        Menu menu2 = new Menu("Category", "Strawberry Ice-Cream", R.drawable.cakeicecream);
+        Menu menu3 = new Menu("Category", "Choco-Bar", R.drawable.chocobar);
+
 
         ArrayList<Menu> menuList = new ArrayList<Menu>();
         menuList.add(menu);
