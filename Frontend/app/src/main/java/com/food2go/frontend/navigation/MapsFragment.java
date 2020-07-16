@@ -1,11 +1,12 @@
-package com.food2go.frontend.menuFragments.order;
+package com.food2go.frontend.navigation;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.core.app.ActivityCompat;
-import androidx.core.app.ActivityCompat.OnRequestPermissionsResultCallback;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
+import androidx.navigation.NavController;
+import androidx.navigation.Navigation;
 
 import android.Manifest;
 import android.content.pm.PackageManager;
@@ -27,17 +28,15 @@ import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
-import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnSuccessListener;
-import com.google.android.gms.tasks.Task;
 
-public class MapsFragment extends Fragment implements OnMapReadyCallback {
+public class MapsFragment extends Fragment implements OnMapReadyCallback, View.OnClickListener {
 
     //Constants
     private static final String FINE_LOCATION = Manifest.permission.ACCESS_FINE_LOCATION;
     private static final String COURSE_LOCATION = Manifest.permission.ACCESS_COARSE_LOCATION;
     private static final int LOCATION_PERMISSION_REQUEST_CODE = 1234;
-    private static final float DEFAULT_ZOOM = 16f;
+    private static final float DEFAULT_ZOOM = 13f;
 
     boolean mLocationPermissionGranted = false;
 
@@ -45,8 +44,9 @@ public class MapsFragment extends Fragment implements OnMapReadyCallback {
 
     private AutoCompleteTextView mSearchText;
     //private LatLng myLocation;
+    private  View view;
 
-
+    private NavController navController;
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater,
@@ -58,12 +58,18 @@ public class MapsFragment extends Fragment implements OnMapReadyCallback {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+        this.view= view;
         getLocationPermission();
         SupportMapFragment mapFragment =
                 (SupportMapFragment) getChildFragmentManager().findFragmentById(R.id.map);
         if (mapFragment != null) {
             mapFragment.getMapAsync(MapsFragment.this);
         }
+
+        view.findViewById(R.id.closeButton).setOnClickListener(this);
+        view.findViewById(R.id.make_order).setOnClickListener(this);
+
+        navController = Navigation.findNavController(view);
     }
 
     @Override
@@ -198,14 +204,34 @@ public class MapsFragment extends Fragment implements OnMapReadyCallback {
         //Log.d(TAG, "moveCamera: moving the camera to lat: "+latLng.latitude + " long: "+ latLng.longitude  );
         map.moveCamera(CameraUpdateFactory.newLatLngZoom(latLng,zoom));
         //setMarkerInMap(latLng,title);
+        setDummyData(latLng);
     }
 
+
+    //Set dummy markers data on map
+    private void setDummyData(LatLng current){
+        setMarkerInMap(new LatLng(current.latitude+0.003,current.longitude+0.005),"Cafe");
+
+        setMarkerInMap(new LatLng(current.latitude+0.002,current.longitude-0.005),"Cafe");
+
+        setMarkerInMap(new LatLng(current.latitude-0.005,current.longitude-0.005),"Cafe");
+    }
 
     //Set Markers on map
     private void setMarkerInMap(LatLng latLng, String title) {
         MarkerOptions options = new MarkerOptions().position(latLng).title(title);
         map.addMarker(options);
-  /*      map.setOnMarkerClickListener(new GoogleMap.OnMarkerClickListener() {
+
+        map.setOnMarkerClickListener(new GoogleMap.OnMarkerClickListener() {
+            @Override
+            public boolean onMarkerClick(Marker marker) {
+                View v = view.findViewById(R.id.details);
+                v.setVisibility(View.VISIBLE);
+                return false;
+            }
+        });
+  /*
+map.setOnMarkerClickListener(new GoogleMap.OnMarkerClickListener() {
             @Override
             public boolean onMarkerClick(Marker marker) {
                 Business business = getBusinessFromList(marker.getTitle());
@@ -232,5 +258,25 @@ public class MapsFragment extends Fragment implements OnMapReadyCallback {
             }
         });
         */
+    }
+
+    //Hide the details of business
+//    public void removeDetailView(View view){
+//        View v = view.findViewById(R.id.details);
+//        v.setVisibility(View.GONE);
+//    }
+
+    @Override
+    public void onClick(View v) {
+        switch(v.getId()) {
+            case R.id.closeButton:
+                View viw = view.findViewById(R.id.details);
+                viw.setVisibility(View.GONE);
+                break;
+            case R.id.make_order:
+               // Toast.makeText(getContext(),"clicked",Toast.LENGTH_SHORT).show();
+                navController.navigate(R.id.action_navigation_map_to_navigation_order);
+                break;
+        }
     }
 }

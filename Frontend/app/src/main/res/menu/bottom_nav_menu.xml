@@ -12,7 +12,7 @@
         android:title="@string/title_history" />
 
     <item
-        android:id="@+id/loginFragment"
+        android:id="@+id/navigation_login"
         android:icon="@drawable/ic_profile"
         android:title="@string/title_profile" />
 

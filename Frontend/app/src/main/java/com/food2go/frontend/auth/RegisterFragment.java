@@ -1,4 +1,4 @@
-package com.food2go.frontend.authfragments;
+package com.food2go.frontend.auth;
 
 import android.os.Bundle;
 
@@ -46,7 +46,7 @@ public class RegisterFragment extends Fragment implements View.OnClickListener {
     public void onClick(View v) {
         switch(v.getId()) {
             case R.id.button_login:
-                navController.navigate(R.id.action_registerFragment_to_loginFragment);
+                navController.navigate(R.id.action_navigation_register_to_navigation_login);
         }
     }
 }

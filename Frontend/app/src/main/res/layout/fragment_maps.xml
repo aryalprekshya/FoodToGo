@@ -12,7 +12,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".menuFragments.order.MapsFragment"
+    tools:context=".navigation.MapsFragment"
     tools:visibility="visible">
 
     <fragment
@@ -29,9 +29,9 @@
         android:id="@+id/relLayout1"
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:layout_marginStart="8dp"
+        android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
-        android:layout_marginEnd="8dp"
+        android:layout_marginEnd="16dp"
         android:background="@drawable/white_border"
         android:elevation="10dp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -47,31 +47,32 @@
             android:layout_marginLeft="10dp"
             android:background="@null"
             android:completionThreshold="1"
-            android:hint="Find business near you."
+            android:hint="Enter your location"
             android:imeOptions="actionSearch"
             android:popupBackground="#A3C1BE"
             android:textColor="#000"
             android:textSize="15sp" />
 
 
-        <Button
+        <ImageButton
             android:id="@+id/searchButton"
             android:layout_width="25dp"
             android:layout_height="25dp"
             android:layout_alignParentEnd="true"
             android:layout_centerVertical="true"
             android:layout_marginEnd="10dp"
-            android:background="@drawable/ic_search"
-            android:onClick="findBusiness" />
+            android:background="@drawable/ic_search" />
+            <!-- android:onClick="findBusiness" -->
+
     </RelativeLayout>
 
-    <!--
+
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/details"
-        android:layout_width="372dp"
-        android:layout_height="178dp"
-        android:layout_marginStart="20dp"
-        android:layout_marginEnd="20dp"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginEnd="32dp"
         android:layout_marginBottom="70dp"
         android:background="@drawable/white_border"
         android:visibility="gone"
@@ -80,74 +81,60 @@
         app:layout_constraintStart_toStartOf="parent"
         tools:visibility="visible">
 
-        <ImageView
-            android:id="@+id/imageView"
-            android:layout_width="120dp"
-            android:layout_height="93dp"
-            android:layout_marginStart="16dp"
-            android:layout_marginBottom="16dp"
-            android:background="@drawable/white_border"
-            android:cropToPadding="false"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            tools:src="@tools:sample/backgrounds/scenic" />
-
-        <TextView
-            android:id="@+id/title"
-            android:layout_width="330dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="24dp"
-            android:layout_marginEnd="8dp"
-            android:fontFamily="sans-serif-black"
-            android:text="Walmart"
-            android:textAlignment="center"
-            android:textAppearance="@style/TextAppearance.AppCompat.Large"
-            android:textSize="20sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <TextView
-            android:id="@+id/openStatus"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:layout_marginEnd="25dp"
-            android:text="Currently Open"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/phone" />
-
-        <TextView
-            android:id="@+id/phone"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:layout_marginEnd="35dp"
-            android:text="Phone"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/title" />
-
-        <Button
+        <ImageButton
             android:id="@+id/closeButton"
             android:layout_width="33dp"
             android:layout_height="25dp"
             android:background="@drawable/ic_dropdown"
-            android:onClick="removeDetailView"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:id="@+id/address"
-            android:layout_width="181dp"
-            android:layout_height="0dp"
-            android:layout_marginTop="11dp"
-            android:layout_marginEnd="30dp"
-            android:text="TextView"
-            android:textAlignment="textEnd"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="24dp"
+            android:text="68 Cathraw Road"
+            android:textColor="#00796B"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/distance"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:layout_marginEnd="21dp"
+            android:text="0.7km"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/openStatus" />
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/opening_time"
+            android:layout_width="wrap_content"
+            android:layout_height="19dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="16dp"
+            android:text="Open until 12am."
+            app:layout_constraintBottom_toTopOf="@+id/make_order"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/address" />
+
+        <Button
+            android:id="@+id/make_order"
+            android:layout_width="208dp"
+            android:layout_height="46dp"
+            android:layout_marginBottom="16dp"
+            android:text="Order Here"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     -->

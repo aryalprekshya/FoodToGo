@@ -9,7 +9,7 @@
         android:layout_height="wrap_content"
         android:padding="16dp"
         android:layout_gravity="center"
-        tools:context=".authfragments.LoginFragment">
+        tools:context=".auth.LoginFragment">
 
         <com.google.android.material.textfield.TextInputLayout
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"

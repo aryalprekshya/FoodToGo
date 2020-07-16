@@ -3,52 +3,95 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/mobile_navigation"
-    app:startDestination="@+id/navigation_order">
+    app:startDestination="@+id/navigation_map">
 
     <fragment
         android:id="@+id/navigation_order"
-        android:name="com.food2go.frontend.menuFragments.OrderFragment"
+        android:name="com.food2go.frontend.navigation.OrderFragment"
         android:label="@string/title_order"
-        tools:layout="@layout/fragment_order" />
+        tools:layout="@layout/fragment_order" >
+
+        <action
+            android:id="@+id/action_navigation_order_to_navigation_main_menu"
+            app:destination="@id/navigation_main_menu" />
+    </fragment>
 
     <fragment
         android:id="@+id/navigation_history"
-        android:name="com.food2go.frontend.menuFragments.HistoryFragment"
+        android:name="com.food2go.frontend.navigation.HistoryFragment"
         android:label="@string/title_history"
         tools:layout="@layout/fragment_history" />
 
     <fragment
         android:id="@+id/navigation_profile"
-        android:name="com.food2go.frontend.menuFragments.ProfileFragment"
+        android:name="com.food2go.frontend.navigation.ProfileFragment"
         android:label="@string/title_profile"
         tools:layout="@layout/fragment_profile" />
     <fragment
         android:id="@+id/navigation_preferences"
-        android:name="com.food2go.frontend.menuFragments.PreferenceFragment"
+        android:name="com.food2go.frontend.navigation.PreferenceFragment"
         android:label="@string/title_preferences"
         tools:layout="@layout/fragment_preference" />
-
     <fragment
         android:id="@+id/navigation_map"
-        android:name="com.food2go.frontend.menuFragments.order.MapsFragment"
+        android:name="com.food2go.frontend.navigation.MapsFragment"
         android:label="fragment_maps"
-        tools:layout="@layout/fragment_maps" />
+        tools:layout="@layout/fragment_maps" >
+
+        <action
+            android:id="@+id/action_navigation_map_to_navigation_order"
+            app:destination="@id/navigation_order" />
+    </fragment>
     <fragment
-        android:id="@+id/loginFragment"
-        android:name="com.food2go.frontend.authfragments.LoginFragment"
+        android:id="@+id/navigation_login"
+        android:name="com.food2go.frontend.auth.LoginFragment"
         android:label="fragment_login"
         tools:layout="@layout/fragment_login" >
+
         <action
-            android:id="@+id/action_loginFragment_to_registerFragment"
-            app:destination="@id/registerFragment" />
+            android:id="@+id/action_navigation_login_to_navigation_register"
+            app:destination="@id/navigation_register" />
     </fragment>
     <fragment
-        android:id="@+id/registerFragment"
-        android:name="com.food2go.frontend.authfragments.RegisterFragment"
+        android:id="@+id/navigation_register"
+        android:name="com.food2go.frontend.auth.RegisterFragment"
         android:label="fragment_register"
         tools:layout="@layout/fragment_register" >
+
         <action
-            android:id="@+id/action_registerFragment_to_loginFragment"
-            app:destination="@id/loginFragment" />
+            android:id="@+id/action_navigation_register_to_navigation_login"
+            app:destination="@id/navigation_login" />
     </fragment>
+
+    <fragment
+        android:id="@+id/navigation_main_menu"
+        android:name="com.food2go.frontend.mealmenu.MainMenuFragment"
+        android:label="fragment_main_menu"
+        tools:layout="@layout/fragment_main_menu" >
+
+        <action
+            android:id="@+id/action_navigation_main_menu_to_navigation_appetizer_menu"
+            app:destination="@id/navigation_appetizer_menu" />
+        <action
+            android:id="@+id/action_navigation_main_menu_to_navigation_drink_menu"
+            app:destination="@id/navigation_drink_menu" />
+        <action
+            android:id="@+id/action_navigation_main_menu_to_navigation_meal_menu"
+            app:destination="@id/navigation_meal_menu" />
+    </fragment>
+    <fragment
+        android:id="@+id/navigation_appetizer_menu"
+        android:name="com.food2go.frontend.mealmenu.AppetizerMenuFragment"
+        android:label="fragment_appetizer_menu"
+        tools:layout="@layout/fragment_appetizer_menu" />
+    <fragment
+        android:id="@+id/navigation_drink_menu"
+        android:name="com.food2go.frontend.mealmenu.DrinkMenuFragment"
+        android:label="fragment_drink_menu"
+        tools:layout="@layout/fragment_drink_menu" />
+    <fragment
+        android:id="@+id/navigation_meal_menu"
+        android:name="com.food2go.frontend.mealmenu.MealMeuFragment"
+        android:label="fragment_meal_meu"
+        tools:layout="@layout/fragment_meal_meu" />
 </navigation>
