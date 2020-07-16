@@ -1,5 +1,6 @@
 package com.food2go.frontend;
 
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
@@ -7,8 +8,11 @@ import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 
 import android.os.Bundle;
+import android.view.MenuItem;
 
+import com.food2go.frontend.authfragments.LoginFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.android.material.navigation.NavigationView;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -17,14 +21,43 @@ public class MainActivity extends AppCompatActivity {
         setTheme(R.style.AppTheme);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        BottomNavigationView navView = findViewById(R.id.nav_view);
+        /* ActionBar
+         */
+        getSupportActionBar().setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM);
+        getSupportActionBar().setCustomView(R.layout.custom_actionbar);
+
+
+
+        final BottomNavigationView navView = findViewById(R.id.nav_view);
         // Passing each menu ID as a set of Ids because each
         // menu should be considered as top level destinations.
-        AppBarConfiguration appBarConfiguration = new AppBarConfiguration.Builder(
-                R.id.navigation_order, R.id.navigation_history, R.id.navigation_history,R.id.navigation_preferences)
-                .build();
+        /*AppBarConfiguration appBarConfiguration = new AppBarConfiguration.Builder(
+                R.id.navigation_map, R.id.navigation_history, R.id.navigation_history,R.id.navigation_preferences)
+                .build(); */
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
-        NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
+        //NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
         NavigationUI.setupWithNavController(navView, navController);
+
+        
+//        navView.getMenu().findItem(R.id.navigation_profile).setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
+//            @Override
+//            public boolean onMenuItemClick(MenuItem item) {
+//                item.setChecked(true);
+//                getSupportFragmentManager().beginTransaction()
+//                        .replace(android.R.id.content,new LoginFragment()).commit();
+//                return true;
+//            }
+//        });
+
+//        navigationView.menu!!.findItem(R.id.nav_logout).setOnMenuItemClickListener { menuItem:MenuItem? ->
+//            //write your implementation here
+//            //to close the navigation drawer
+//            if (drawer_layout.isDrawerOpen(GravityCompat.START)) {
+//                drawer_layout.closeDrawer(GravityCompat.START)
+//            }
+//            Toast.makeText(applicationContext, "single item click listener implemented", Toast.LENGTH_SHORT).show()
+//            true
+//        }
+
     }
 }
