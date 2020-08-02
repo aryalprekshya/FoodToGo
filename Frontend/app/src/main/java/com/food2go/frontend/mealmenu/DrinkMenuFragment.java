@@ -67,5 +67,6 @@ public class DrinkMenuFragment extends Fragment implements IMenuItemsClickListen
     @Override
     public void onMenuItemsClick(View v, String name) {
 
+
     }
 }

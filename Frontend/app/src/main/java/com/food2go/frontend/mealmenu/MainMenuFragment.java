@@ -64,9 +64,8 @@ public class MainMenuFragment extends Fragment implements IMenuItemsClickListene
         navController = Navigation.findNavController(view);
     }
 
-
     private ArrayList<Menu> createDummyMenu() {
-        Menu menu = new Menu("Category", "Drink", R.drawable.drink);
+        Menu menu = new Menu("Category", "Drink" , R.drawable.drink);
         Menu menu1 = new Menu("Category", "Appetizer", R.drawable.appetizer);
         Menu menu2 = new Menu("Category", "Meal", R.drawable.meal);
         Menu menu3 = new Menu("Category", "Dessert", R.drawable.dessert);
@@ -79,7 +78,6 @@ public class MainMenuFragment extends Fragment implements IMenuItemsClickListene
 
         return menuList;
     }
-
 
     @Override
     public void onMenuItemsClick(View v, String name) {

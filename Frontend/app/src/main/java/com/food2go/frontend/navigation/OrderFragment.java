@@ -17,13 +17,10 @@ import com.food2go.frontend.R;
 
 public class OrderFragment extends Fragment implements View.OnClickListener {
 
-
-
     private NavController navController;
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
     }
 
     @Override
