@@ -1,7 +1,8 @@
 package com.food2go.frontend.interfaces;
 
-import android.view.View;
+
+import com.food2go.frontend.models.Menu;
 
 public interface IMenuItemsClickListener {
-    void onMenuItemsClick(View v, String name);
+    void onMenuItemsClick(Menu menu);
 }

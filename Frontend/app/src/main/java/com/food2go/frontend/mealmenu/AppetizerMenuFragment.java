@@ -2,7 +2,12 @@ package com.food2go.frontend.mealmenu;
 
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.navigation.NavController;
+import androidx.navigation.NavDirections;
+import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -15,6 +20,7 @@ import com.food2go.frontend.R;
 import com.food2go.frontend.adapter.RecyclerViewAdapter;
 import com.food2go.frontend.interfaces.IMenuItemsClickListener;
 import com.food2go.frontend.models.Menu;
+import com.google.android.gms.common.api.Api;
 
 import java.util.ArrayList;
 
@@ -24,6 +30,7 @@ public class AppetizerMenuFragment extends Fragment implements IMenuItemsClickLi
     RecyclerView.LayoutManager layoutManager;
     RecyclerViewAdapter recyclerViewAdapter;
 
+    private NavController navController;
     public AppetizerMenuFragment() {
         // Required empty public constructor
     }
@@ -51,10 +58,10 @@ public class AppetizerMenuFragment extends Fragment implements IMenuItemsClickLi
     }
 
     private ArrayList<Menu> createDummyMenu() {
-        Menu menu = new Menu("Category", "Chicken Popcorn", R.drawable.chickenpopcorn);
-        Menu menu1 = new Menu("Category", "Pan Fried Calamary", R.drawable.calamary);
-        Menu menu2 = new Menu("Category", "Stuffed Mushroom", R.drawable.mushroom);
-        Menu menu3 = new Menu("Category", "Fries", R.drawable.fries);
+        Menu menu = new Menu("Category", "Chicken Popcorn", R.drawable.chickenpopcorn,5.2);
+        Menu menu1 = new Menu("Category", "Pan Fried Calamary", R.drawable.calamary,9.5);
+        Menu menu2 = new Menu("Category", "Stuffed Mushroom", R.drawable.mushroom,8.5);
+        Menu menu3 = new Menu("Category", "Fries", R.drawable.fries,5);
 
         ArrayList<Menu> menuList = new ArrayList<Menu>();
         menuList.add(menu);
@@ -64,9 +71,21 @@ public class AppetizerMenuFragment extends Fragment implements IMenuItemsClickLi
 
         return menuList;
     }
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+
+        navController = Navigation.findNavController(view);
+    }
 
     @Override
-    public void onMenuItemsClick(View v, String name) {
+    public void onMenuItemsClick(Menu menu) {
 
+        AppetizerMenuFragmentDirections.ActionNavigationAppetizerMenuToFoodDetailsFragment action =AppetizerMenuFragmentDirections.actionNavigationAppetizerMenuToFoodDetailsFragment();
+        action.setItemName(menu.getName());
+
+        action.setPrice(String.valueOf(menu.getPrice()));
+        navController.navigate(action);
     }
+
 }

@@ -2,7 +2,11 @@ package com.food2go.frontend.mealmenu;
 
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.navigation.NavController;
+import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -25,6 +29,7 @@ public class DessertMenuFragment extends Fragment implements IMenuItemsClickList
     RecyclerView.LayoutManager layoutManager;
     RecyclerViewAdapter recyclerViewAdapter;
 
+    private NavController navController;
     public DessertMenuFragment() {
         // Required empty public constructor
     }
@@ -54,10 +59,10 @@ public class DessertMenuFragment extends Fragment implements IMenuItemsClickList
     }
 
     private ArrayList<Menu> createDummyMenu() {
-        Menu menu = new Menu("Category", "Ice-Cream", R.drawable.icecream);
-        Menu menu1 = new Menu("Category", "Cone", R.drawable.cone);
-        Menu menu2 = new Menu("Category", "Strawberry Ice-Cream", R.drawable.cakeicecream);
-        Menu menu3 = new Menu("Category", "Choco-Bar", R.drawable.chocobar);
+        Menu menu = new Menu("Category", "Ice-Cream", R.drawable.icecream,5);
+        Menu menu1 = new Menu("Category", "Cone", R.drawable.cone,2);
+        Menu menu2 = new Menu("Category", "Strawberry Ice-Cream", R.drawable.cakeicecream,4);
+        Menu menu3 = new Menu("Category", "Choco-Bar", R.drawable.chocobar,3.5);
 
 
         ArrayList<Menu> menuList = new ArrayList<Menu>();
@@ -68,9 +73,19 @@ public class DessertMenuFragment extends Fragment implements IMenuItemsClickList
 
         return menuList;
     }
-
     @Override
-    public void onMenuItemsClick(View v, String name) {
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
 
+        navController = Navigation.findNavController(view);
+    }
+    @Override
+    public void onMenuItemsClick(Menu menu) {
+
+        DessertMenuFragmentDirections.ActionNavigationDessertMenuToFoodDetailsFragment action = DessertMenuFragmentDirections.actionNavigationDessertMenuToFoodDetailsFragment();
+        action.setItemName(menu.getName());
+
+        action.setPrice(String.valueOf(menu.getPrice()));
+        navController.navigate(action);
     }
 }

@@ -2,7 +2,11 @@ package com.food2go.frontend.mealmenu;
 
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.navigation.NavController;
+import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -23,6 +27,9 @@ public class MealMeuFragment extends Fragment implements IMenuItemsClickListener
     private RecyclerView recyclerView;
     RecyclerView.LayoutManager layoutManager;
     RecyclerViewAdapter recyclerViewAdapter;
+
+
+    private NavController navController;
 
     public MealMeuFragment() {
         // Required empty public constructor
@@ -50,11 +57,18 @@ public class MealMeuFragment extends Fragment implements IMenuItemsClickListener
         return view;
     }
 
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+
+        navController = Navigation.findNavController(view);
+    }
+
     private ArrayList<Menu> createDummyMenu() {
-        Menu menu = new Menu("Category", "Sushi", R.drawable.sushi);
-        Menu menu1 = new Menu("Category", "Burger", R.drawable.burger);
-        Menu menu2 = new Menu("Category", "Manchurian", R.drawable.manchurian);
-        Menu menu3 = new Menu("Category", "Salad", R.drawable.salad);
+        Menu menu = new Menu("Category", "Sushi", R.drawable.sushi,12.5);
+        Menu menu1 = new Menu("Category", "Burger", R.drawable.burger,15);
+        Menu menu2 = new Menu("Category", "Manchurian", R.drawable.manchurian,21);
+        Menu menu3 = new Menu("Category", "Salad", R.drawable.salad,6);
 
         ArrayList<Menu> menuList = new ArrayList<Menu>();
         menuList.add(menu);
@@ -66,7 +80,15 @@ public class MealMeuFragment extends Fragment implements IMenuItemsClickListener
     }
 
     @Override
-    public void onMenuItemsClick(View v, String name) {
+    public void onMenuItemsClick(Menu menu) {
+
+        MealMeuFragmentDirections.ActionNavigationMealMenuToFoodDetailsFragment action = MealMeuFragmentDirections.actionNavigationMealMenuToFoodDetailsFragment();
+        action.setItemName(menu.getName());
+
+        action.setPrice(String.valueOf(menu.getPrice()));
+        System.out.println(menu.getPrice());
+        navController.navigate(action);
+        //navController.navigate(R.id.action_navigation_meal_menu_to_foodDetailsFragment);
 
     }
 }

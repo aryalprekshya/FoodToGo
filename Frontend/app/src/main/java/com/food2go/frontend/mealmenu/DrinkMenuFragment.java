@@ -2,7 +2,11 @@ package com.food2go.frontend.mealmenu;
 
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.navigation.NavController;
+import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -23,6 +27,7 @@ public class DrinkMenuFragment extends Fragment implements IMenuItemsClickListen
     RecyclerView.LayoutManager layoutManager;
     RecyclerViewAdapter recyclerViewAdapter;
 
+    private NavController navController;
     public DrinkMenuFragment() {
         // Required empty public constructor
     }
@@ -50,10 +55,10 @@ public class DrinkMenuFragment extends Fragment implements IMenuItemsClickListen
         return view;
     }
     private ArrayList<Menu> createDummyMenu() {
-        Menu menu = new Menu("Category", "Tea", R.drawable.tea);
-        Menu menu1 = new Menu("Category", "Ice-Tea", R.drawable.icetea);
-        Menu menu2 = new Menu("Category", "Coke", R.drawable.coke);
-        Menu menu3 = new Menu("Category", "Water", R.drawable.waterbottle);
+        Menu menu = new Menu("Category", "Tea", R.drawable.tea,4.0);
+        Menu menu1 = new Menu("Category", "Ice-Tea", R.drawable.icetea,3.0);
+        Menu menu2 = new Menu("Category", "Coke", R.drawable.coke,2);
+        Menu menu3 = new Menu("Category", "Water", R.drawable.waterbottle,2);
 
         ArrayList<Menu> menuList = new ArrayList<Menu>();
         menuList.add(menu);
@@ -63,10 +68,20 @@ public class DrinkMenuFragment extends Fragment implements IMenuItemsClickListen
 
         return menuList;
     }
-
     @Override
-    public void onMenuItemsClick(View v, String name) {
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
 
+        navController = Navigation.findNavController(view);
+    }
+    @Override
+    public void onMenuItemsClick(Menu menu) {
+        DrinkMenuFragmentDirections.ActionNavigationDrinkMenuToFoodDetailsFragment action = DrinkMenuFragmentDirections.actionNavigationDrinkMenuToFoodDetailsFragment();
+        action.setItemName(menu.getName());
+
+
+        action.setPrice(String.valueOf(menu.getPrice()));
+        navController.navigate(action);
 
     }
 }

@@ -65,10 +65,10 @@ public class MainMenuFragment extends Fragment implements IMenuItemsClickListene
     }
 
     private ArrayList<Menu> createDummyMenu() {
-        Menu menu = new Menu("Category", "Drink" , R.drawable.drink);
-        Menu menu1 = new Menu("Category", "Appetizer", R.drawable.appetizer);
-        Menu menu2 = new Menu("Category", "Meal", R.drawable.meal);
-        Menu menu3 = new Menu("Category", "Dessert", R.drawable.dessert);
+        Menu menu = new Menu("Category", "Drink" , R.drawable.drink,0);
+        Menu menu1 = new Menu("Category", "Appetizer", R.drawable.appetizer,0);
+        Menu menu2 = new Menu("Category", "Meal", R.drawable.meal,0);
+        Menu menu3 = new Menu("Category", "Dessert", R.drawable.dessert,0);
 
         ArrayList<Menu> menuList = new ArrayList<Menu>();
         menuList.add(menu);
@@ -80,8 +80,8 @@ public class MainMenuFragment extends Fragment implements IMenuItemsClickListene
     }
 
     @Override
-    public void onMenuItemsClick(View v, String name) {
-        switch(name){
+    public void onMenuItemsClick(Menu menu) {
+        switch(menu.getName()){
             case "Drink":
                 navController.navigate(R.id.action_navigation_main_menu_to_navigation_drink_menu);
                 break;

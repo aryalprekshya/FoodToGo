@@ -16,7 +16,7 @@
         android:orientation="vertical">
 
         <ImageView
-            android:id="@+id/imageView"
+            android:id="@+id/foodDetailImage"
             android:layout_width="120dp"
             android:layout_gravity="center"
             android:layout_height="120dp"
@@ -27,7 +27,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:text="ImageNo"
+            android:text="Item"
             android:textSize="25sp"
             android:textStyle="bold" />
 
@@ -36,9 +36,26 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:text="ImagePrice"
+            android:text="Price: "
             android:textSize="25sp"
             android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/tv_total"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="Total: 0"
+            android:textSize="25sp"
+            android:textStyle="bold"  />
+
+        <TextView
+            android:id="@+id/success"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textAlignment="center"
+            android:textColor="#00796B"
+            tools:text="Successfully added to cart." />
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
@@ -50,26 +67,11 @@
             android:orientation="vertical"
           >
 
-            <TextView
-                android:id="@+id/tv_slides"
-                android:layout_width="102dp"
-                android:layout_height="36dp"
-                android:layout_marginStart="8dp"
-                android:layout_marginTop="8dp"
-                android:layout_marginEnd="316dp"
-                android:layout_marginBottom="8dp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.481" />
-
             <Button
                 android:id="@+id/btn_add"
                 android:layout_width="54dp"
                 android:layout_height="52dp"
-                android:layout_marginStart="116dp"
+                android:layout_marginStart="32dp"
                 android:layout_marginTop="8dp"
                 android:layout_marginBottom="8dp"
                 android:text="+"
@@ -78,48 +80,74 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.428" />
+                app:layout_constraintVertical_bias="0.0" />
 
             <TextView
-                android:id="@+id/tv_slidestype"
-                android:layout_width="102dp"
-                android:layout_height="34dp"
-                android:layout_marginStart="180dp"
+                android:id="@+id/tv_quantity"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
                 android:layout_marginBottom="8dp"
+                android:text="0"
+                android:textSize="24sp"
+                android:textStyle="bold"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintEnd_toStartOf="@+id/btn_minus"
+                app:layout_constraintStart_toEndOf="@+id/btn_add"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.48"
+                tools:text="0" />
 
             <Button
                 android:id="@+id/btn_minus"
                 android:layout_width="54dp"
                 android:layout_height="52dp"
-                android:layout_marginStart="290dp"
                 android:layout_marginTop="8dp"
+                android:layout_marginEnd="32dp"
                 android:layout_marginBottom="8dp"
                 android:text="-"
                 android:textSize="25sp"
                 android:textStyle="bold"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                />
+                app:layout_constraintVertical_bias="0.428" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
         <Button
+            android:id="@+id/addToCart"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="80dp"
-            android:layout_margin="30dp"
-            android:layout_marginRight="30dp"
+            android:layout_margin="10dp"
             android:text="Add To Cart"
             android:textAlignment="center"
-            android:textColor="#000"
-            android:textSize="30sp"
-            android:textStyle="bold"
-            />
+            android:textColor="#FBFBFB"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+
+        <Button
+            android:id="@+id/go_to_cart"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:text="Go To Cart"
+
+            android:textAlignment="center"
+            android:textColor="#FFFEFE"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+
+        <Button
+            android:id="@+id/go_to_menu"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:text="Go To Menu"
+            android:textAlignment="center"
+            android:textColor="#F4EEEE"
+            android:textSize="18sp"
+            android:textStyle="bold" />
 
     </LinearLayout>
 </FrameLayout>

@@ -39,6 +39,15 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         Menu menu = menuList.get(position);
         holder.imageView.setImageResource(menu.getImage());
         holder.textView.setText(menu.getName());
+        holder.m.setPrice(menu.getPrice());
+        holder.m.setCategory(menu.getCategory());
+
+        holder.mview.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mainMenufragment.onMenuItemsClick(menu);
+            }
+        });
     }
 
     @Override
@@ -46,21 +55,21 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         return menuList.size();
     }
 
-    public class MyViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
+    public class MyViewHolder extends RecyclerView.ViewHolder {
 
         ImageView imageView;
         TextView textView;
+        Menu m;
+        View mview;
 
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
-            imageView=itemView.findViewById(R.id.imageView);
+            mview= itemView;
+            imageView=itemView.findViewById(R.id.foodDetailImage);
             textView=itemView.findViewById(R.id.textView);
-            itemView.setOnClickListener(this);
+            m = new Menu();
         }
 
-        @Override
-        public void onClick(View v) {
-            mainMenufragment.onMenuItemsClick(v, textView.getText().toString());
-        }
+
     }
 }
